@@ -1,0 +1,12 @@
+fastapi 
+uvicorn 
+PyPDF2 
+openai 
+pdfplumber 
+pydantic 
+python-multipart
+langchain
+langchain_google_genai
+dotenv
+os
+logging
