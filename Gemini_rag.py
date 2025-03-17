@@ -5,9 +5,14 @@ from pydantic import BaseModel
 import pdfplumber
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.schema import HumanMessage, SystemMessage
-
+from dotenv import loadenv
+import os
+load_dotenv()
 # Initialize FastAPI app
 app = FastAPI()
+
+GOOGLE_API_KEY=os.getenv("GEMINI_API_KEY")
+
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -31,8 +36,8 @@ def extract_text_from_pdf(pdf_bytes):
 # Initialize LangChain's Gemini Chat model
 gemini_chat = ChatGoogleGenerativeAI(
     model="gemini-1.5-pro", 
-    google_api_key="AIzaSyAW_wVt-_LcpvW1MH2gsBL7H-ZCbqJ_pPk", 
     temperature=0.7, 
+    google_api_key=GOOGLE_API_KEY
 )
 
 # API Endpoint to Upload PDF
